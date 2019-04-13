@@ -23,11 +23,11 @@ http_port 3128 	                            监听的端口号
 cache_mem 64M 	                            内存缓冲区的大小
 cache_dir ufs /var/spool/squid 2000 16 256 	硬盘缓冲区的大小
 cache_effective_user squid 	                设置缓存的有效用户
-cache_effective_group squid 	            设置缓存的有效用户组
+cache_effective_group squid 	              设置缓存的有效用户组
 dns_nameservers IP地址 	                    一般不设置，而是用服务器默认的DNS地址
 cache_access_log /var/log/squid/access.log 	访问日志文件的保存路径
 cache_log /var/log/squid/cache.log 	        缓存日志文件的保存路径
-visible_hostname linuxprobe.com 	        设置Squid服务器的名称
+visible_hostname linuxprobe.com 	          设置Squid服务器的名称
 
 systemctl restart squid
 systemctl enable squid
@@ -74,6 +74,3 @@ squid -z
 iptables -t nat -A PREROUTING  -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128
 iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -o eno33554968 -j SNAT --to 您的桥接网卡IP地址
 service iptables save
-
-
-
